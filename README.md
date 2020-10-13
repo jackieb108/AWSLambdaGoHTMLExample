@@ -35,7 +35,10 @@ Setup used in this projects
 8. zip the file on ubuntu application. I enabled windows subsytem for linuc and then downloaded ubuntu application to run zip for unix flavor
 
     `$zip -o chartUSpopulation.zip chartUSpopulation`
-    
+
+## Add lambda role
+1. Create role called 'lambda-role' assinging `AmazonS3FullAccess`, `AWSXRayDaemonWriteAccess` and `AWSLambdaBasicExecutionRole`. Assign this role while create lambda function in next steps.
+
 ## Steps for AWS lambda and API Gateway setup 
 1. Create AWS Lambda function `AWS Lambda -> Create Function`
     > Add chart name as 'chartpopulation'
