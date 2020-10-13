@@ -10,7 +10,7 @@ Setup used in this projects
 ![images](/assets/images/AWSLambdaGoHTMLExampleArchi.jpg)
 
 
-Steps using GIT project:
+## Steps for GIT project:
 1. Clone the git repo
 
     `$ git clone https://github.com/jackieb108/AWSLambdaGoHTMLExample.git`
@@ -36,7 +36,28 @@ Steps using GIT project:
 
     `$zip -o chartUSpopulation.zip chartUSpopulation`
     
-Steps on AWS console 
-1. Create 
+## Steps for AWS lambda and API Gateway setup 
+1. Create AWS Lambda function `AWS Lambda -> Create Function`
+    > Add chart name as 'chartpopulation'
+    > Select 'Runime' as 'Go 1.x'
+    > Hit 'Create Function' button
+2. Upload zipped go file from the laptop or VM (chartUSpopulation.zip) from step 8 in above section
+    > `Lambda -> Functions -> chartpopulation` (Configuration tab)
+    > Scroll down on the page to `Function Code`
+    > Click on `Actions->Upload zip file`
+    > Upload the `chartUSpopulation.zip`
+    > scroll down on same page `Lambda -> Functions -> chartpopulation` (Configuration tab) to section `Basic`
+    > Hit edit and update the `Handler` to `chartUSpopulation` and save
+3. Navigate to 'API Gateway`(Setting up API Gateway to service HTTP call adn return HTML file)
+    > Hit `Create API` button
+    > Choose `HTTP API` option and click `Build`
+    > On `Create API` page 1) `Add Integrations`. Choose `Lambda` and provide the lambda service name `chartpopulation`. Lambda names should be avaialble as we loaded the file earlier 2) Pick a name for the API - `LambdaUSPopulationProxyAPI`
+    > On 'Configure Routes`, keep method as `ANY` and add resource `chartpopulation`. Click `Next` OR navigate to `Stages`
+    > Add `test` as a stage. Click `Next` and hit `Create`
+    > Check teh URL on API page for this API - https://XXXXXX.us-east-1.amazonaws.com/test . I have added XXXXXX here in teh path, please be sure to check the path for your API and use it apporpirately
+    > Deploy the API using 'test' as stage
+    > Test URL by adding the resource path https://XXXXXX.us-east-1.amazonaws.com/test/chartpopulation
+    
+Calling the API page https://XXXXXX.us-east-1.amazonaws.com/test/chartpopulation will invoke lambda and lambda will do the processing calling APIs and generating highchart graph to display US population. You should see a similar char at below
 
-2. 
+
