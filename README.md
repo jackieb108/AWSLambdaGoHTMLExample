@@ -6,3 +6,4 @@ Setup used in this projects
 2. Lambda code built using golang call 2 APIs. First REST API call retrieves US population data as JSON. Lambda function extracts years/US population from this API response. Lambda function then retrieves high chart template file from s3. It replaces the xAxia and yAxis data in the chart with JSON extracted years/US population data. Lambda function returns the updated  highchart html file with years/US population
 3. AWS API Gateway send the html file back to the end user
 
+![images](/assets/images/AWSLambdaGoHTMLExampleArchi.jpg)
