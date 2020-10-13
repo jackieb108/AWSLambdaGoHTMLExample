@@ -60,4 +60,5 @@ Setup used in this projects
     
 Calling the API page https://XXXXXX.us-east-1.amazonaws.com/test/chartpopulation will invoke lambda and lambda will do the processing calling APIs and generating highchart graph to display US population. You should see a similar char at below
 
+![images](/assets/images/USpopulationChart.jpg)
 
